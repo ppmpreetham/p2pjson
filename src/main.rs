@@ -169,7 +169,7 @@ async fn run_client(server_addr: NodeAddr) -> Result<()> {
     };
     
     // Get JSON for the message
-    let json_data = getJSON(&message)?;
+    let json_data = get_json(&message)?;
     println!("Client: Sending message: {}", String::from_utf8_lossy(&json_data));
     
     // Send the message
@@ -192,8 +192,7 @@ async fn run_client(server_addr: NodeAddr) -> Result<()> {
     Ok(())
 }
 
-// This is the getJSON function mentioned in the requirements
-fn getJSON<T: Serialize>(data: &T) -> Result<Vec<u8>> {
+fn get_json<T: Serialize>(data: &T) -> Result<Vec<u8>> {
     let json = serde_json::to_vec(data)?;
     Ok(json)
 }
